@@ -6,6 +6,10 @@
 
 If you haven't already, create a HuggingFace account [here](https://huggingface.co/join). We will need it later. Go to step 2 if you already have an account. 
 
+### 2. Pull the latest changes (Obviously) 
+
+Use `git pull` or Github Desktop to pull the latest changes to this repository. 
+
 ### 2. Set up Python environment
 
 Create a new conda environment for this project: 
