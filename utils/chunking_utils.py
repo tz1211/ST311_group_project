@@ -46,7 +46,7 @@ def adaptive_semantic_chunking(text, similarity_threshold=0.8, chunk_size=defaul
     output_chunks_list.append(prev_chunk)
     output_embeddings_list.append(prev_embedding)
     print(f"output_chunks_list length {len(output_chunks_list)}")
-    
+
     return output_chunks_list, output_embeddings_list, cosine_similarity_list
 
 
@@ -55,6 +55,7 @@ def simple_chunking(text, chunk_size=default_chunk_size, chunk_overlap=default_c
     """
     This function takes a text and a chunk size and returns a list of chunks strictly adhering to the chunk size (without regards for sentence or paragraph boundaries). 
     """
+    # TODO: Edit here for issue #1 
     pass
 
 
@@ -63,4 +64,5 @@ def sentence_chunking(text, chunk_size=default_chunk_size, chunk_overlap=default
     """
     This function takes a text and a chunk size and returns a list of chunks, respecting sentence and paragraph boundaries. 
     """
+    # TODO: Edit here for issue #2 
     pass
