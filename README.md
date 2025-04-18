@@ -10,7 +10,7 @@ If you haven't already, create a HuggingFace account [here](https://huggingface.
 
 Use `git pull` or Github Desktop to pull the latest changes to this repository. 
 
-### 2. Set up Python environment
+### 3. Set up Python environment
 
 Create a new conda environment for this project: 
 ```bash
@@ -27,12 +27,12 @@ Install required dependencies (make sure you're in the root directory of the pro
 pip install -r requirements.txt 
 ```
 
-### 3. Create `.env` file
+### 4. Create `.env` file
 
 Create a file `.env` at the root level of the project. 
 
 Copy the contents in `.env.sample` exactly into `.env` (You do not need to make any changes to `.env` for now as we are not using any private tokens yet) 
 
-### 4. Preprocess LongBench dataset
+### 5. Preprocess LongBench dataset
 
 Run `notebooks/NB0-benchmarks_preprocessing.ipynb` to generate a filtered `longbench_filtered.csv` in the `data/` folder. The data folder is gitignored, so any data will not be tracked by git. 
