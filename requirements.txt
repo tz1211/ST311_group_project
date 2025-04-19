@@ -79,7 +79,7 @@ mypy-extensions==1.0.0
 nest_asyncio==1.6.0
 networkx==3.4.2
 nltk==3.9.1
-numpy==2.2.4
+numpy==1.26.4
 openai==1.75.0
 packaging==24.2
 pandas==2.2.3
