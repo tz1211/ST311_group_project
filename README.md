@@ -36,3 +36,9 @@ Copy the contents in `.env.sample` exactly into `.env` (You do not need to make 
 ### 5. Preprocess LongBench dataset
 
 Run `notebooks/NB0-benchmarks_preprocessing.ipynb` to generate a filtered `longbench_filtered.csv` in the `data/` folder. The data folder is gitignored, so any data will not be tracked by git. 
+
+### 6. Generate HuggingFace Token 
+
+Go to [HuggingFace](https://huggingface.co), make sure you're signed in. Click on your profile icon on the top right and go to "Settings". On the left, go to "Access Token", create a new one and give it "Write" access. Note down the token. 
+
+P.S. DO NOT under any circumstance push your token to github. Keep it in your `.env` file as `MODEL_ENDPOINT=[your_HF_token]`, DO NOT same it in `.env.sample` as it will be pushed to github. 
