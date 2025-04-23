@@ -1,4 +1,5 @@
 import os
+import logging
 from dotenv import load_dotenv
 from sklearn.metrics.pairwise import cosine_similarity
 from llama_index.core.node_parser import SentenceSplitter
@@ -6,6 +7,8 @@ from llama_index.core.node_parser import SentenceSplitter
 from .embeddings_utils import compute_text_embedding
 
 load_dotenv()
+
+logger = logging.getLogger(__name__)
 
 default_chunk_size = int(os.getenv("CHUNK_SIZE", 256))
 default_chunk_overlap = int(os.getenv("CHUNK_OVERLAP", 20))
@@ -20,7 +23,7 @@ def adaptive_semantic_chunking(text, similarity_threshold=0.8, chunk_size=defaul
     )
 
     text_chunks = splitter.split_text(text)
-    print(f"text_chunks length {len(text_chunks)}")
+    logger.info(f"text_chunks length {len(text_chunks)}")
     embeddings_list = [compute_text_embedding(chunk) for chunk in text_chunks] 
 
     output_chunks_list = []
@@ -45,7 +48,7 @@ def adaptive_semantic_chunking(text, similarity_threshold=0.8, chunk_size=defaul
     # Appending the last chunk to output
     output_chunks_list.append(prev_chunk)
     output_embeddings_list.append(prev_embedding)
-    print(f"output_chunks_list length {len(output_chunks_list)}")
+    logger.info(f"output_chunks_list length {len(output_chunks_list)}")
 
     return output_chunks_list, output_embeddings_list, cosine_similarity_list
 
