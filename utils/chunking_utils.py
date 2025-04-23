@@ -1,6 +1,7 @@
 import os
 import logging
 from dotenv import load_dotenv
+from transformers import AutoTokenizer
 from sklearn.metrics.pairwise import cosine_similarity
 from llama_index.core.node_parser import SentenceSplitter
 
@@ -12,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 default_chunk_size = int(os.getenv("CHUNK_SIZE", 256))
 default_chunk_overlap = int(os.getenv("CHUNK_OVERLAP", 20))
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 
 def adaptive_semantic_chunking(text, similarity_threshold=0.8, chunk_size=default_chunk_size): 
     """
@@ -58,8 +60,18 @@ def simple_chunking(text, chunk_size=default_chunk_size, chunk_overlap=default_c
     """
     This function takes a text and a chunk size and returns a list of chunks strictly adhering to the chunk size (without regards for sentence or paragraph boundaries). 
     """
-    # TODO: Edit here for issue #1 
-    pass
+    tokens = tokenizer.tokenize(text)
+    chunks = []
+    
+    start = 0
+    while start < len(tokens):
+        end = min(start + chunk_size, len(tokens))
+        chunk = tokens[start:end]
+        chunk_text = tokenizer.convert_tokens_to_string(chunk)
+        chunks.append(chunk_text)
+        start += chunk_size - chunk_overlap  # step forward, retaining overlap
+    
+    return chunks
 
 
 
