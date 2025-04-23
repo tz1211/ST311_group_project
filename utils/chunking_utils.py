@@ -79,5 +79,12 @@ def sentence_chunking(text, chunk_size=default_chunk_size, chunk_overlap=default
     """
     This function takes a text and a chunk size and returns a list of chunks, respecting sentence and paragraph boundaries. 
     """
-    # TODO: Edit here for issue #2 
-    pass
+    splitter = SentenceSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+    )
+
+    text_chunks = splitter.split_text(text)
+    embeddings_list = [compute_text_embedding(chunk) for chunk in text_chunks] 
+
+    return text_chunks, embeddings_list
