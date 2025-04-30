@@ -81,6 +81,7 @@ networkx==3.4.2
 nltk==3.9.1
 numpy==1.26.4
 openai==1.75.0
+openai_messages_token_helper==0.1.11
 packaging==24.2
 pandas==2.2.3
 parso==0.8.4
