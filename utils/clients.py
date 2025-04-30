@@ -8,8 +8,8 @@ load_dotenv(override=True)
 
 def create_chat_client() -> OpenAI:
     return OpenAI(
-        base_url="https://api-inference.huggingface.co/v1/",
-        api_key=os.getenv("MODEL_ENDPOINT")
+        base_url=os.getenv("MODEL_ENDPOINT"),
+        api_key=os.getenv("API_KEY")
     )
 
 def create_embed_client() -> BGEM3FlagModel:
